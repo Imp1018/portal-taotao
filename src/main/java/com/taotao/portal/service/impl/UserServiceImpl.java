@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
     @Value("${SSO_BASE_URL}")
-    private String SSO_BASE_URL;
+    public String SSO_BASE_URL;
 
     @Value("${SSO_USER_TOKEN}")
-    private String SSO_USER_TOKEN;
+    public String SSO_USER_TOKEN;
 
     @Value("${SSO_USER_LOGIN}")
-    private String SSO_USER_LOGIN;
+    public String SSO_USER_LOGIN;
 
     @Override
     public TbUser getUserByToken(String token) {
