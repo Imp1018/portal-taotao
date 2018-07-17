@@ -1,21 +1,30 @@
 package com.taotao.portal.pojo;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.List;
 
 
 
 public class SearchResult {
 	//商品列表
-	private List<SearchItem> searchItemList;
+	private List<Item> searchItemList;
 	//总记录数
 	private long recordCount;
 
-	public List<SearchItem> getSearchItemList() {
+	public List<Item> getSearchItemList() {
 		return searchItemList;
 	}
 
-	public SearchResult setSearchItemList(List<SearchItem> searchItemList) {
+	public long getTotalPages() {
+		return totalPages;
+	}
+
+	public void setTotalPages(long totalPages) {
+		this.totalPages = totalPages;
+	}
+
+	public SearchResult setSearchItemList(List<Item> searchItemList) {
 		this.searchItemList = searchItemList;
 		return this;
 	}
@@ -29,14 +38,7 @@ public class SearchResult {
 		return this;
 	}
 
-	public long getPageCount() {
-		return pageCount;
-	}
 
-	public SearchResult setPageCount(long pageCount) {
-		this.pageCount = pageCount;
-		return this;
-	}
 
 	public long getCurPage() {
 		return curPage;
@@ -48,7 +50,7 @@ public class SearchResult {
 	}
 
 	//总页数
-	private long pageCount;
+	private long totalPages;
 	//当前页
 	private long curPage;
 }

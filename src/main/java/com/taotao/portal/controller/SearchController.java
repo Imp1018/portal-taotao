@@ -18,24 +18,24 @@ public class SearchController {
     @RequestMapping("/search")
     public String search(Model model,@RequestParam("q") String keyword, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "60") Integer rows ) {
             // get乱码处理
-        try {
-            keyword=new String(keyword.getBytes("iso8859-1"),"utf8");
-        } catch (UnsupportedEncodingException e) {
-            keyword="";
-            e.printStackTrace();
-        }
+//        try {
+//            keyword=new String(keyword.getBytes("iso8859-1"),"utf8");
+//        } catch (UnsupportedEncodingException e) {
+//            keyword="";
+//            e.printStackTrace();
+//        }
         SearchResult search = searchService.search(keyword, page,rows);
-        if (search != null) {
+
             //参数传递给页面
             model.addAttribute("query", keyword);
-            model.addAttribute("totalPages", search.getPageCount());
+            model.addAttribute("totalPages", search.getTotalPages());
             model.addAttribute("itemList", search.getSearchItemList());
-            model.addAttribute("page", search.getCurPage());
+            model.addAttribute("page", page);
 
             //返回逻辑视图
             return "search";
-        }
-        return "search";
+
+
 
     }
 }

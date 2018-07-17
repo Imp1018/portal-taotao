@@ -6,7 +6,7 @@ import com.taotao.pojo.TbItemParamItem;
 import com.taotao.portal.commons.HttpClientUtil;
 import com.taotao.portal.commons.JsonUtils;
 import com.taotao.portal.commons.TaotaoResult;
-import com.taotao.portal.pojo.PortalItem;
+import com.taotao.portal.pojo.ItemInfo;
 import com.taotao.portal.service.ItemService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -34,7 +34,7 @@ public class ItemServiceImpl implements ItemService {
         //根据商品id查询商品基本信息
         String json = HttpClientUtil.doGet(REST_BASE_URL + REST_ITEM_BASE_URL + itemId);
         // 转换成java对象
-        TaotaoResult taotaoResult = TaotaoResult.formatToPojo(json, PortalItem.class);
+        TaotaoResult taotaoResult = TaotaoResult.formatToPojo(json, ItemInfo.class);
         TbItem item = (TbItem) taotaoResult.getData();
         return item;
     }
